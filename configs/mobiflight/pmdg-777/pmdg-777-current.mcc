@@ -1,0 +1,669 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MobiflightConnector>
+  <outputs>
+    <config guid="d7a8037b-400a-4bb2-a837-7c5910f74ebb">
+      <active>true</active>
+      <description>Autothrottle (PMDG 77W)</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="CODE" Value="(L:switch_2071_a, number)" UUID="96eb1dd2-e2aa-4cd2-9246-28de2393493a" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="Output" serial="MobiFlight Mega/ SN-E34-DB9" trigger="normal" pin="Teensy42" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="9da9a91b-f3bc-4406-9f0e-a00d0e1320e1">
+      <active>false</active>
+      <description>Throttle lever position index 1 (general) - diagnostic only</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="CODE" Value="(A:GENERAL ENG THROTTLE LEVER POSITION:1,Percent)" UUID="0b686a65-eea5-4055-ae49-b6e553391c5c" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="-" serial="MobiFlight Mega/ SN-E34-DB9" trigger="normal" pin="" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="b6fac288-120f-4152-b0fa-3fed63c2bd96">
+      <active>false</active>
+      <description>Throttle lever position index 2 (general) - diagnostic only</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="CODE" Value="(A:GENERAL ENG THROTTLE LEVER POSITION:2,Percent)" UUID="0b686a65-eea5-4055-ae49-b6e553391c5c" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="-" serial="MobiFlight Mega/ SN-E34-DB9" trigger="normal" pin="" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="f5fc1143-e247-416a-9c89-27c4795a37ee">
+      <active>true</active>
+      <description>LCD</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="CODE" Value="(L:switch_498_a)" UUID="f66f1260-9a72-4b71-b2b9-365b9c021e65" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <comparison active="False" value="0" operand="=" ifValue="retracted" elseValue="$" />
+          <comparison active="False" value="200" operand="=" ifValue="armed" elseValue="$" />
+        </modifiers>
+        <display type="LcdDisplay" serial="MF UNO MCP/ SN-954-004" trigger="normal" address="LcdDisplay">
+          <line>spdbrk: !!!!!!!!</line>
+          <line>at:     ########</line>
+        </display>
+        <preconditions />
+        <configrefs>
+          <configref active="True" ref="f03435c9-8727-4ee5-bc7c-56a537c770b1" placeholder="#" testvalue="1" />
+          <configref active="True" ref="64af7adb-324b-473f-92c2-81e50e4b9597" placeholder="!" testvalue="1" />
+        </configrefs>
+      </settings>
+    </config>
+    <config guid="1ec70119-5797-4d50-9ba2-fbfed962a688">
+      <active>true</active>
+      <description>Landing Light N</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="Variable" varType="number" varName="LandingLightsAll" varExpression="$" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <comparison active="True" value="" operand="=" ifValue="1" elseValue="0" />
+        </modifiers>
+        <display type="InputAction" serial="-" trigger="change">
+          <button>
+            <onPress type="MSFS2020CustomInputAction" command="(L:switch_23_a) if{ 2301 (&gt;K:ROTOR_BRAKE) }" presetId="e5606b70-895d-41f6-bc63-5976d182d347" />
+            <onRelease type="MSFS2020CustomInputAction" command="(L:switch_23_a) ! if{ 2301 (&gt;K:ROTOR_BRAKE) }" presetId="96a03a73-7fe3-4219-b7a1-3450227a744a" />
+          </button>
+        </display>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="ae5d6c48-7c94-41c0-80ac-87ccca5c4534">
+      <active>true</active>
+      <description>Landing Light L</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="Variable" varType="number" varName="LandingLightsAll" varExpression="$" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <comparison active="True" value="" operand="=" ifValue="1" elseValue="0" />
+        </modifiers>
+        <display type="InputAction" serial="-" trigger="change">
+          <button>
+            <onPress type="MSFS2020CustomInputAction" command="(L:switch_22_a) if{ 2201 (&gt;K:ROTOR_BRAKE) }" presetId="50f02567-9ab3-4d18-bf3c-0c45004b9986" />
+            <onRelease type="MSFS2020CustomInputAction" command="(L:switch_22_a) ! if{ 2201 (&gt;K:ROTOR_BRAKE) }" presetId="321ea1d1-b955-424a-a3fa-027b133e53e5" />
+          </button>
+        </display>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="6ebec7f3-3ff6-4738-ba67-802ccf5142f8">
+      <active>true</active>
+      <description>Landing Light R</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="Variable" varType="number" varName="LandingLightsAll" varExpression="$" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <comparison active="True" value="" operand="=" ifValue="1" elseValue="0" />
+        </modifiers>
+        <display type="InputAction" serial="-" trigger="change">
+          <button>
+            <onPress type="MSFS2020CustomInputAction" command="(L:switch_24_a) if{ 2401 (&gt;K:ROTOR_BRAKE) }" presetId="fe4f8fc8-5046-47ac-ae6f-6e15e02ed29d" />
+            <onRelease type="MSFS2020CustomInputAction" command="(L:switch_24_a) ! if{ 2401 (&gt;K:ROTOR_BRAKE) }" presetId="d86bd8c3-c113-412e-8486-4c9dd2aa806a" />
+          </button>
+        </display>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="4020028b-38ae-40f1-843b-c4e18619a716">
+      <active>true</active>
+      <description>Gear indicate N</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="LVAR" Value="" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="" serial="" pin="" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="f0a260f9-75db-48d9-8279-9a25852f3fcc">
+      <active>true</active>
+      <description>Runway Light Left</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="Variable" varType="number" varName="RwyLightsAll" varExpression="$" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="InputAction" serial="">
+          <button>
+            <onPress type="MSFS2020CustomInputAction" command="(L:switch_119_a) if{ 11901 (&gt;K:ROTOR_BRAKE) }" presetId="9f9cd037-4a47-432b-82ec-f9483a2fc29d" />
+            <onRelease type="MSFS2020CustomInputAction" command="(L:switch_119_a) ! if{ 11901 (&gt;K:ROTOR_BRAKE) }" presetId="4fbd7757-24d1-45ef-8f8f-2e0c8945596f" />
+          </button>
+        </display>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="b67338e6-53af-49c4-b0ef-5fce1370c8de">
+      <active>true</active>
+      <description>Runway Light Right</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="Variable" varType="number" varName="RwyLightsAll" varExpression="$" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="InputAction" serial="">
+          <button>
+            <onPress type="MSFS2020CustomInputAction" command="(L:switch_120_a) if{ 12001 (&gt;K:ROTOR_BRAKE) }" presetId="e49e04da-04f0-49bf-8437-1b44f2715ca6" />
+            <onRelease type="MSFS2020CustomInputAction" command="(L:switch_120_a) ! if{ 12001 (&gt;K:ROTOR_BRAKE) }" presetId="0849bb7a-f80d-48a2-9ca6-136bea7bf01f" />
+          </button>
+        </display>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="304a2c3b-bb08-47b2-b2a2-57f3e94415bb">
+      <active>true</active>
+      <description>Beacon</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="Variable" varType="number" varName="BcnNavLogoLights" varExpression="$" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="InputAction" serial="">
+          <button>
+            <onPress type="MSFS2020CustomInputAction" command="(L:switch_114_a) if{ 11401 (&gt;K:ROTOR_BRAKE) }" presetId="9dc54527-44ee-41a5-a70d-1652d87bce92" />
+            <onRelease type="MSFS2020CustomInputAction" command="(L:switch_114_a) ! if{ 11401 (&gt;K:ROTOR_BRAKE) }" presetId="cb08ec69-abfe-4f4d-99bf-232826be2a77" />
+          </button>
+        </display>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="c4af1ccc-4e1e-401f-b030-9eaa0d4c7aad">
+      <active>true</active>
+      <description>Nav</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="Variable" varType="number" varName="BcnNavLogoLights" varExpression="$" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="InputAction" serial="">
+          <button>
+            <onPress type="MSFS2020CustomInputAction" command="(L:switch_115_a) if{ 11501 (&gt;K:ROTOR_BRAKE) }" presetId="4fe642e0-36d2-4d75-9dcd-9712f31df46b" />
+            <onRelease type="MSFS2020CustomInputAction" command="(L:switch_115_a) ! if{ 11501 (&gt;K:ROTOR_BRAKE) }" presetId="15da1f0f-8660-46d1-990b-b69f96e729b5" />
+          </button>
+        </display>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="ef1f6ee3-4087-4110-9a7c-03b2662963eb">
+      <active>true</active>
+      <description>Logo</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="Variable" varType="number" varName="BcnNavLogoLights" varExpression="$" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="InputAction" serial="">
+          <button>
+            <onPress type="MSFS2020CustomInputAction" command="(L:switch_116_a) if{ 11601 (&gt;K:ROTOR_BRAKE) }" presetId="e71dddb2-5475-4f15-8108-4e8746cf8ae6" />
+            <onRelease type="MSFS2020CustomInputAction" command="(L:switch_116_a) ! if{ 11601 (&gt;K:ROTOR_BRAKE) }" presetId="ce8f5688-8fb0-416f-8d24-a0021cbba98f" />
+          </button>
+        </display>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="634f053b-cffa-48b9-8610-864236bb829a">
+      <active>true</active>
+      <description>Park Brake</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="CODE" Value="(L:switch_515_a, Number)" UUID="05b98f4f-4090-43ce-8713-34bb7c659e22" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <transformation active="True" expression="if($&gt;0,1,0)" />
+        </modifiers>
+        <display type="Output" serial="MF UNO LGHTS/ SN-450-CBF" trigger="normal" pin="L4" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="471d1fa0-1cd7-4df5-a24b-997f0603de3c">
+      <active>true</active>
+      <description>Pedestal Flood</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="LVAR" Value="" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <comparison active="True" value="" operand="=" ifValue="1" elseValue="0" />
+        </modifiers>
+        <display type="" serial="-" trigger="change" pin="" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="926d510c-761b-43b0-acf3-ce554c68b2c7">
+      <active>true</active>
+      <description>Left Gear Position (%)</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="CODE" Value="(A:GEAR LEFT POSITION,Percent)" UUID="7b6f6c2e-c57a-473f-a8cd-2c4b2e08a06d" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="-" serial="-" trigger="normal" pin="" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="fb039fd3-681b-48ba-a174-270562e5bc81">
+      <active>true</active>
+      <description>Right Gear Position (%)</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="CODE" Value="(A:GEAR RIGHT POSITION,Percent)" UUID="1976ba5b-c140-464a-87f4-a74551fd1d2f" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="-" serial="-" trigger="normal" pin="" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="2d869d18-f2d9-40bf-a791-941afa97650c">
+      <active>true</active>
+      <description>Center Gear Position (%)</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="CODE" Value="(A:GEAR CENTER POSITION,Percent)" UUID="2fcbb65e-ac51-41e8-86b7-a0acfce2f30a" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="-" serial="-" trigger="normal" pin="" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="64af7adb-324b-473f-92c2-81e50e4b9597">
+      <active>true</active>
+      <description>Speedbrake Position</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="CODE" Value="(L:switch_498_a)" UUID="f66f1260-9a72-4b71-b2b9-365b9c021e65" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="-" serial="-" trigger="normal" pin="" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="f03435c9-8727-4ee5-bc7c-56a537c770b1">
+      <active>true</active>
+      <description>Autothrottle Status</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="CODE" Value="(L:switch_2071_a, number)" UUID="96eb1dd2-e2aa-4cd2-9246-28de2393493a" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="-" serial="-" trigger="normal" pin="" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="e8b41c1d-c452-4e7e-91d7-f4b29b72ebce">
+      <active>false</active>
+      <description>Nose Gear Light</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="CODE" Value="(L:switch_2071_a, number)" UUID="96eb1dd2-e2aa-4cd2-9246-28de2393493a" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="-" serial="-" trigger="normal" pin="" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="b96e640c-0ea5-4be4-af07-f1596374d0ec">
+      <active>true</active>
+      <description>Strobe Light Status</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="Variable" varType="number" varName="StrobeLights" varExpression="$" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <transformation active="True" expression="if($=1,0,1)" />
+        </modifiers>
+        <display type="-" serial="-" trigger="normal" pin="" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="a4156672-b387-44a5-88e0-6e17d1725be4">
+      <active>false</active>
+      <description>PackedPWMOut</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="LVAR" Value="" />
+        <test type="Float" value="1" />
+        <modifiers>
+          <transformation active="True" expression="# * 1 + ! * 2" />
+          <transformation active="True" expression="$ * 85" />
+        </modifiers>
+        <display type="Output" serial="MobiFlight Mega/ SN-E34-DB9" trigger="normal" pin="PackedPWMOut" pinBrightness="255" pinPwm="True" />
+        <preconditions />
+        <configrefs>
+          <configref active="True" ref="b96e640c-0ea5-4be4-af07-f1596374d0ec" placeholder="#" testvalue="1" />
+          <configref active="True" ref="634f053b-cffa-48b9-8610-864236bb829a" placeholder="!" testvalue="1" />
+        </configrefs>
+      </settings>
+    </config>
+    <config guid="756bfb8b-9373-4ae5-bb6d-e95bc1d72d5c">
+      <active>true</active>
+      <description>Flaps handle index (diagnostic)</description>
+      <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <source type="SimConnect" VarType="CODE" Value="(A:FLAPS HANDLE INDEX,Number)" UUID="3358c830-b02a-4787-8e7d-b66bdb43889f" />
+        <test type="Float" value="1" />
+        <modifiers />
+        <display type="-" serial="-" trigger="normal" pin="" pinBrightness="255" />
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+  </outputs>
+  <inputs>
+    <config guid="395c2586-bf3c-4f34-ab6c-dc43366bb9a0">
+      <active>false</active>
+      <description>Throttle Lever Position</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="" name="" type="-" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="b7aa7cb2-6013-431c-8ca3-66d21b060ab9">
+      <active>true</active>
+      <description>Landing Lights - ALL</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="T7         " type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="VariableInputAction" varType="number" varName="LandingLightsAll" varExpression="@" />
+          <onRelease type="VariableInputAction" varType="number" varName="LandingLightsAll" varExpression="@" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="f7bf1547-bfc7-49c3-951b-f5db64833bf5">
+      <active>true</active>
+      <description>Taxi Light</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="T6" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="MSFS2020CustomInputAction" command="(L:switch_121_a) ! if{ 12101 (&gt;K:ROTOR_BRAKE) }" presetId="ae2572c1-7b6c-4210-9fc5-66a651835752" />
+          <onRelease type="MSFS2020CustomInputAction" command="(L:switch_121_a) if{ 12101 (&gt;K:ROTOR_BRAKE) }" presetId="7bfbfa5b-b47a-471d-a7fd-e27ffc2e8316" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="87620643-c5d3-4efa-9122-a076da1b6b8d">
+      <active>true</active>
+      <description>Turnoff Lights - ALL</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="T6" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="VariableInputAction" varType="number" varName="RwyLightsAll" varExpression="@" />
+          <onRelease type="VariableInputAction" varType="number" varName="RwyLightsAll" varExpression="@" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="17af9463-889e-4e16-8e1c-334ef87fc6d3">
+      <active>true</active>
+      <description>Strobe light</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="T4" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="MSFS2020CustomInputAction" command="(L:switch_122_a) ! if{ 12201 (&gt;K:ROTOR_BRAKE) }" presetId="ec189ff5-847e-47b6-adee-f22f16ffdaa0" />
+          <onRelease type="MSFS2020CustomInputAction" command="(L:switch_122_a) if{ 12201 (&gt;K:ROTOR_BRAKE) }" presetId="da9ceee3-8323-4c6e-a4e8-9e40c412c61e" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="64242b36-32be-4513-a36d-61a1fff1ce11">
+      <active>true</active>
+      <description>Strobe light (VAR)</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="T4" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="VariableInputAction" varType="number" varName="StrobeLights" varExpression="@" />
+          <onRelease type="VariableInputAction" varType="number" varName="StrobeLights" varExpression="@" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="1f766595-a44b-437a-a025-babf517354ab">
+      <active>true</active>
+      <description>Master Brightness</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="E2" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="MSFS2020CustomInputAction" command="(L:OH_MASTER_BRIGHT_ROTATE, number) 1 + 100 min (&gt;L:OH_MASTER_BRIGHT_ROTATE)" presetId="b8ad66de-7e30-48e5-ba97-5602cec2f377" />
+          <onLeftFast />
+          <onRight type="MSFS2020CustomInputAction" command="(L:OH_MASTER_BRIGHT_ROTATE, number) 1 - 0 max (&gt;L:OH_MASTER_BRIGHT_ROTATE)" presetId="8c4664a9-b0c6-4a1b-b6a0-48a6557bc0f3" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="9ba30050-0c87-4360-a670-8f55fe1adfc4">
+      <active>true</active>
+      <description>MCP Glareshield Flood Brightness</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO MCP/ SN-954-004" name="E1" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="MSFS2020CustomInputAction" command="(L:OH_GS_FLOOD_LIGHT_CONTROL, number) 1 + 100 min (&gt;L:OH_GS_FLOOD_LIGHT_CONTROL)" presetId="f2b70370-0556-4fe5-a690-582022ecd37f" />
+          <onLeftFast />
+          <onRight type="MSFS2020CustomInputAction" command="(L:OH_GS_FLOOD_LIGHT_CONTROL, number) 1 - 0 max (&gt;L:OH_GS_FLOOD_LIGHT_CONTROL)" presetId="4ca5de14-23b1-49ef-b4aa-3e949328f2cc" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="df556240-383b-4675-b0d1-b8e85f3d3e7f">
+      <active>true</active>
+      <description>Aisle Stand (Pedestal) Flood Brightness</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="E1" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="MSFS2020CustomInputAction" command="(L:PED_FLOOD_LIGHT_CONTROL, number) 1 + 100 min (&gt;L:PED_FLOOD_LIGHT_CONTROL)" presetId="b2970e48-3a40-4d4b-b3c0-918461657aee" />
+          <onLeftFast />
+          <onRight type="MSFS2020CustomInputAction" command="(L:PED_FLOOD_LIGHT_CONTROL, number) 1 - 0 max (&gt;L:PED_FLOOD_LIGHT_CONTROL)" presetId="91ea3332-52cd-4694-87af-bab31700c103" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="c3ca0b4a-3142-419f-acc2-3459ba99542f">
+      <active>true</active>
+      <description>Forward Left Flood Brightness</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="E1" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="MSFS2020CustomInputAction" command="(L:LEFT_FLOOD_LIGHT_CONTROL) 5 + 0 max 100 min (&gt;L:LEFT_FLOOD_LIGHT_CONTROL)" presetId="6ce47519-d9a4-4bd6-997a-aadc56a12cfd" />
+          <onLeftFast />
+          <onRight type="MSFS2020CustomInputAction" command="(L:LEFT_FLOOD_LIGHT_CONTROL) 5 - 0 max 100 min (&gt;L:LEFT_FLOOD_LIGHT_CONTROL)" presetId="8ed4490c-1686-47c0-a4ca-b8de76734363" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="10683734-5dcb-4481-bce5-af2efc404b3b">
+      <active>true</active>
+      <description>Forward Right Flood Brightness</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="E1" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="MSFS2020CustomInputAction" command="(L:RIGHT_FLOOD_LIGHT_CONTROL) 5 + 0 max 100 min (&gt;L:RIGHT_FLOOD_LIGHT_CONTROL)" presetId="821342d6-e296-4d40-b582-92001ec7b1e2" />
+          <onLeftFast />
+          <onRight type="MSFS2020CustomInputAction" command="(L:RIGHT_FLOOD_LIGHT_CONTROL) 5 - 0 max 100 min (&gt;L:RIGHT_FLOOD_LIGHT_CONTROL)" presetId="ac37ba1c-ed63-4d55-a636-c93126b10ba9" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="731c992a-5656-4fc1-ba20-7666549fe51a">
+      <active>true</active>
+      <description>MCP - Altitude</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO MCP/ SN-954-004" name="E4" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="MSFS2020CustomInputAction" command="225007 (&gt;K:ROTOR_BRAKE)" presetId="b4a400b0-4723-476d-a325-02c2ce9bf38f" />
+          <onLeftFast />
+          <onRight type="MSFS2020CustomInputAction" command="225008 (&gt;K:ROTOR_BRAKE)" presetId="6afe361f-e762-41e5-bda1-4da350312815" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="4ec4c30b-0db0-4f35-aa38-ceda63edec96">
+      <active>true</active>
+      <description>MCP - HDG</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO MCP/ SN-954-004" name="E3" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="MSFS2020CustomInputAction" command="218007 (&gt;K:ROTOR_BRAKE)" presetId="2560332d-c066-4a1a-9942-277cc6287a49" />
+          <onLeftFast />
+          <onRight type="MSFS2020CustomInputAction" command="218008 (&gt;K:ROTOR_BRAKE)" presetId="1c88d6f4-66df-4430-b329-9606cac1de63" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="e72b3c32-0291-4f74-9049-e35bfaa08484">
+      <active>true</active>
+      <description>MCP - VS</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO MCP/ SN-954-004" name="E5" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="MSFS2020CustomInputAction" command="22208 (&gt;K:ROTOR_BRAKE)" presetId="4eb08c10-3f54-4024-83ba-d00deb6a9edd" />
+          <onLeftFast />
+          <onRight type="MSFS2020CustomInputAction" command="22207 (&gt;K:ROTOR_BRAKE)" presetId="22c6677f-8a05-47db-8463-8bc30bc2289f" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="cd7aa16d-a3c5-4a5c-9ad8-da39a3aac515">
+      <active>true</active>
+      <description>MCP - IAS</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO MCP/ SN-954-004" name="E2" type="Encoder" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <encoder>
+          <onLeft type="MSFS2020CustomInputAction" command="21007 (&gt;K:ROTOR_BRAKE)" presetId="a0f10365-22ef-4be2-a294-2fdcc6fff722" />
+          <onLeftFast />
+          <onRight type="MSFS2020CustomInputAction" command="21008 (&gt;K:ROTOR_BRAKE)" presetId="7bdd6940-fed1-4796-a48d-6e647a61a3bd" />
+          <onRightFast />
+        </encoder>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="1ee3a80f-ad63-4923-a56d-c4b06f0da019">
+      <active>true</active>
+      <description>BCN NAV LOGO - ALL</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="T3" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="VariableInputAction" varType="number" varName="BcnNavLogoLights" varExpression="@" />
+          <onRelease type="VariableInputAction" varType="number" varName="BcnNavLogoLights" varExpression="@" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="9a460be6-4151-4aca-b5c9-74a134cd4417">
+      <active>true</active>
+      <description>Seatbelt</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="T1" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="MSFS2020CustomInputAction" command="100 (L:switch_30_a) - 50 div s0 :1 l0 0 &gt; if{ 3007 (&gt;K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 &lt; if{ 3008 (&gt;K:ROTOR_BRAKE) l0 ++ s0 g1 }" presetId="595eccd8-70c2-4a86-b05b-4413c2aa2f3b" />
+          <onRelease type="MSFS2020CustomInputAction" command="0 (L:switch_30_a) - 50 div s0 :1 l0 0 &gt; if{ 3007 (&gt;K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 &lt; if{ 3008 (&gt;K:ROTOR_BRAKE) l0 ++ s0 g1 }" presetId="f3ac1cc4-924e-4428-95f0-f8e89ab77020" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="78b9e334-e122-4b55-aa85-7b5d88aa198f">
+      <active>true</active>
+      <description>MCP Vertical Speed Button</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO MCP/ SN-954-004" name="EB4" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="MSFS2020CustomInputAction" command="22301 (&gt;K:ROTOR_BRAKE)" presetId="fd846103-1267-4dfc-8482-4e155e95f26f" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="f394af20-4f8b-4fc3-899c-28ebd85c2397">
+      <active>true</active>
+      <description>MCP Heading Button</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO MCP/ SN-954-004" name="EB2" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="MSFS2020CustomInputAction" command="21801 (&gt;K:ROTOR_BRAKE)" presetId="5f015033-1a56-48fa-ab1b-8f317b27cd65" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="25030c11-39fb-415d-b2c6-027944cacaf9">
+      <active>true</active>
+      <description>MCP FLCH</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO MCP/ SN-954-004" name="EB3" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="MSFS2020CustomInputAction" command="21301 (&gt;K:ROTOR_BRAKE)" presetId="54f16fd0-e9d2-44ad-a18c-66c58bffb6f5" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="09ae1804-5490-4eb5-bf5e-34bfd28b8017">
+      <active>true</active>
+      <description>MCP IAS Button</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO MCP/ SN-954-004" name="EB1" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="MSFS2020CustomInputAction" command="210001 (&gt;K:ROTOR_BRAKE)" presetId="a215c43a-46e7-415c-a65f-f18afd14f393" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="101d9944-07f5-409f-998a-fa7c241c49f2">
+      <active>true</active>
+      <description>Caution Ack</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO MCP/ SN-954-004" name="B1" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="MSFS2020CustomInputAction" command="17701 (&gt;K:ROTOR_BRAKE)" presetId="a79d77f6-8bbe-47c7-b63f-c809d0a8fa27" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="acf789b2-74f0-4e5d-8247-ddf7898eb8e0">
+      <active>true</active>
+      <description>BARO Standard</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO MCP/ SN-954-004" name="B2" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="MSFS2020CustomInputAction" command="19201 (&gt;K:ROTOR_BRAKE)" presetId="d0fe73a7-1839-4d47-99d0-c64fbc163cc8" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="b43a24ca-7072-499e-b7e7-228d6fa14646">
+      <active>true</active>
+      <description>Spoiler Potentiometer</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="P1" type="AnalogInput" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <analog>
+          <onChange type="MSFS2020CustomInputAction" command="@ 32.0293 * 16383 - -16383 max 16383 min (&gt;K:AXIS_SPOILER_SET)" presetId="65f1f712-7ef9-4755-b932-c0111d2629d9" />
+        </analog>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+    <config guid="4bc49375-9b7c-4728-ac25-7afb6c55880e">
+      <active>true</active>
+      <description>APU</description>
+      <settings msdata:InstanceType="MobiFlight.InputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" serial="MF UNO LGHTS/ SN-450-CBF" name="T2" type="Button" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <button>
+          <onPress type="MSFS2020CustomInputAction" command="100 (L:switch_03_a) - 50 div s0 :1 l0 0 &gt; if{ 307 (&gt;K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 &lt; if{ 308 (&gt;K:ROTOR_BRAKE) l0 ++ s0 g1 }" presetId="93aa64ac-5441-4f7d-8122-43bee82f18fc" />
+          <onRelease type="MSFS2020CustomInputAction" command="0 (L:switch_03_a) - 50 div s0 :1 l0 0 &gt; if{ 307 (&gt;K:ROTOR_BRAKE) l0 -- s0 g1 } l0 0 &lt; if{ 308 (&gt;K:ROTOR_BRAKE) l0 ++ s0 g1 }" presetId="1f0a6f75-d6e8-4cc9-b171-303ec54e4342" />
+        </button>
+        <preconditions />
+        <configrefs />
+      </settings>
+    </config>
+  </inputs>
+</MobiflightConnector>

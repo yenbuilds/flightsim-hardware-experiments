@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ModuleType>MobiFlight Uno</ModuleType>
+  <ModuleName>MF UNO LGHTS</ModuleName>
+  <PowerSavingTime>600</PowerSavingTime>
+  <Button Name="T2" Pin="3" />
+  <Button Name="T3" Pin="4" />
+  <Button Name="T4" Pin="5" />
+  <Button Name="T5" Pin="6" />
+  <AnalogInput Name="P1" Pin="18" Sensitivity="5" />
+  <Output Name="L4" Pin="13" />
+  <AnalogInput Name="P2" Pin="19" Sensitivity="5" />
+  <AnalogInput Name="P3" Pin="17" Sensitivity="5" />
+  <Output Name="L1" Pin="10" />
+  <Output Name="L2" Pin="12" />
+  <Output Name="L3" Pin="11" />
+  <Encoder Name="E1" PinLeft="9" PinRight="8" EncoderType="1" />
+  <Encoder Name="E2" PinLeft="14" PinRight="15" EncoderType="1" />
+  <Button Name="T7         " Pin="16" />
+  <Button Name="T6" Pin="7" />
+  <Button Name="T1" Pin="2" />
+</Config>

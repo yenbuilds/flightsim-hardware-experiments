@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ModuleType>MobiFlight Uno</ModuleType>
+  <ModuleName>MF UNO MCP</ModuleName>
+  <PowerSavingTime>600</PowerSavingTime>
+  <LcdDisplay Name="LcdDisplay" Address="39" Cols="16" Lines="2" />
+  <Encoder Name="E1" PinLeft="2" PinRight="3" EncoderType="1" />
+  <Encoder Name="E2" PinLeft="4" PinRight="5" EncoderType="1" />
+  <Encoder Name="E3" PinLeft="7" PinRight="8" EncoderType="1" />
+  <Encoder Name="E4" PinLeft="10" PinRight="11" EncoderType="1" />
+  <Encoder Name="E5" PinLeft="14" PinRight="15" EncoderType="1" />
+  <Button Name="B1" Pin="17" />
+  <Button Name="B2" Pin="13" />
+  <Button Name="EB1" Pin="6" />
+  <Button Name="EB2" Pin="9" />
+  <Button Name="EB3" Pin="12" />
+  <Button Name="EB4" Pin="16" />
+</Config>
