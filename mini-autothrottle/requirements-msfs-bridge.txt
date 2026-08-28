@@ -1,0 +1,3 @@
+# Needed only for bridge/msfs_teensy_bridge.py.
+pyserial>=3.5,<4
+SimConnect==0.4.26

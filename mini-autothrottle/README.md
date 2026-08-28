@@ -1,6 +1,6 @@
 # Boeing 737 motorised throttle
 
-This folder contains the Teensy firmware and Node modules for a motorised Boeing 737 style throttle. It is a completley standalone experiment. Nothing here currently reads PMDG/MobiFlight data or starts automatically.
+This is a small motorised Boeing 737-style throttle project. Nothing starts on its own, and the bridge only moves the levers when you explicitly enable it.
 
 The supplied profile is `boeing-737` (also `737` and `pmdg-737`). It maps a simulator throttle value to the physical lever from the 45% active floor to full travel:
 
@@ -18,7 +18,8 @@ The supplied profile is `boeing-737` (also `737` and `pmdg-737`). It maps a simu
 - A momentary or latching A/T mode switch.
 - A motor power supply matched to the motor. The old build used roughly 5-9 V; confirm the motor current and voltage before using that range.
 - USB connection from the Teensy to the PC.
-- Arduino IDE with Teensy support, and Node.js 18 or newer.
+- Arduino IDE with Teensy support.
+- 64-bit Python 3.8+ for the MSFS bridge. Node.js 18+ is only needed if you want to write your own Node bridge.
 
 Optional: three red/green gear LEDs, each with suitable current limiting.
 
@@ -53,9 +54,34 @@ Open `src/teensy/autothrottle/autothrottle.ino` in Arduino IDE.
 
 Before connecting the motor, move the lever by hand and confirm the pot readings/calibration. The current defaults are 10 at one end and 1013 at the other. To print live readings, temporarily set `DEBUG_MODE` to `true`, then turn it back off before normal use. If the reading runs the wrong way, change `invertPot` in the sketch before testing the motor.
 
-## Set up the Node side
+## Run it with MSFS
 
-From this folder:
+`bridge/msfs_teensy_bridge.py` reads the standard engine-throttle values from SimConnect, averages engines 1 and 2, and sends the result to the Teensy. It uses the same 461-to-1013 calibration as the firmware.
+
+Start with a dry run. It talks to MSFS and prints the commands it would send, but it does not open the Teensy serial port or move anything.
+
+```powershell
+py -3 -m venv .venv
+.venv\Scripts\Activate
+py -m pip install -r requirements-msfs-bridge.txt
+py bridge\msfs_teensy_bridge.py
+```
+
+With motor power disconnected and the A/T switch in MANUAL, check that 0%, 50%, and 100% give roughly `T0461`, `T0737`, and `T1013`. When those look right, reconnect motor power, keep the switch in MANUAL, and run:
+
+```powershell
+py bridge\msfs_teensy_bridge.py --port COM10 --enable-motion
+```
+
+At startup it sends the calibration to the Teensy, then waits for three good readings before it sends a target. The physical A/T switch is what lets the motor run. The bridge does not know whether the sim's A/T is engaged.
+
+Run either this bridge or a Node bridge, not both. Two programs must not write to the same Teensy port.
+
+The requirements file pins `SimConnect==0.4.26`, the package used by the original bridge. See its [package documentation](https://pypi.org/project/SimConnect/).
+
+## If you want to use Node instead
+
+Use this route only when you already have a Node program that can provide the throttle values. From this folder:
 
 ```powershell
 npm.cmd test
@@ -70,7 +96,7 @@ $env:AT_TEENSY_PORT = 'COM10'
 $env:THROTTLE_PROFILE = 'boeing-737'
 ```
 
-Other useful settings:
+Settings you may need to change:
 
 | Setting | Default | Meaning |
 | --- | --- | --- |
@@ -84,7 +110,7 @@ Other useful settings:
 
 `AT_POT_MIN` and `AT_POT_MAX` must match the physical quadrant. The Node side sends them to the Teensy at startup, along with the 461-count gate.
 
-## Connect it to a telemetry source
+## Writing a Node bridge
 
 Your telemetry code must call this module whenever it receives engine-throttle values. `thr1` and `thr2` must use the raw scale configured by `AT_RAW_MAX` (16383 by default).
 
@@ -105,14 +131,14 @@ function onThrottleUpdate(thr1, thr2) {
 }
 ```
 
-The folder does not provide `onThrottleUpdate`; that is the missing PMDG/SimConnect/MobiFlight bridge you must add or connect.
+There is no ready-made Node program here. This is the API to call if you are replacing the Python bridge.
 
 ## First powered test
 
 1. Keep the motor supply off and confirm the Teensy appears as both serial and joystick USB devices.
 2. Set the pot limits and check the lever does not report outside them.
 3. Connect motor power with the lever near the 461-count floor.
-4. Send a small target change first, then verify direction. If it moves the wrong way, reverse the motor leads or correct the direction logic—do not let it run into the mechanical stops.
-5. Only then connect live simulator throttle data.
+4. Send a small target change first and check the direction. If it is wrong, reverse the motor leads or fix the direction logic before it reaches a mechanical stop.
+5. Start the Python bridge in dry-run mode, then use `--enable-motion` only after the targets are correct.
 
 The old A320 files are in `disabled-profiles/` and cannot be selected. `boeing-777` remains as an older reference profile; it is not the default.

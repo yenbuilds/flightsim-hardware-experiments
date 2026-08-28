@@ -1,5 +1,5 @@
-# Disabled profiles
+# A320 notes
 
-These A320 files were never finished or tested. They stay here as reference only and cannot be selected by the loader.
+These A320 files were never finished or tested. They are kept for reference and the loader will not use them.
 
-They used a `D:` command that conflicted with the firmware's `D,...` layout command. Do not move them back into the active profile folder without reworking and testing that protocol.
+They use `D:`, which clashes with the firmware's `D,...` layout command. Do not re-enable them until that protocol has been redesigned and tested.
