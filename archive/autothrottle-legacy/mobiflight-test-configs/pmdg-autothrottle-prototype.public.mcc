@@ -8,7 +8,7 @@
         <source type="SimConnect" VarType="CODE" Value="(L:switch_2071_a, number)" UUID="96eb1dd2-e2aa-4cd2-9246-28de2393493a" />
         <test type="Float" value="1" />
         <modifiers />
-        <display type="Output" serial="MobiFlight Mega/ SN-PUB-ATC" trigger="normal" pin="Teensy42" pinBrightness="255" />
+        <display type="Output" serial="MobiFlight Mega/ SN-E34-DB9" trigger="normal" pin="Teensy42" pinBrightness="255" />
         <preconditions />
         <configrefs />
       </settings>
@@ -20,7 +20,7 @@
         <source type="SimConnect" VarType="CODE" Value="(A:GENERAL ENG THROTTLE LEVER POSITION:1,Percent)" UUID="0b686a65-eea5-4055-ae49-b6e553391c5c" />
         <test type="Float" value="1" />
         <modifiers />
-        <display type="-" serial="MobiFlight Mega/ SN-PUB-ATC" trigger="normal" pin="" pinBrightness="255" />
+        <display type="-" serial="MobiFlight Mega/ SN-E34-DB9" trigger="normal" pin="" pinBrightness="255" />
         <preconditions />
         <configrefs />
       </settings>
@@ -32,7 +32,7 @@
         <source type="SimConnect" VarType="CODE" Value="(A:GENERAL ENG THROTTLE LEVER POSITION:2,Percent)" UUID="0b686a65-eea5-4055-ae49-b6e553391c5c" />
         <test type="Float" value="1" />
         <modifiers />
-        <display type="-" serial="MobiFlight Mega/ SN-PUB-ATC" trigger="normal" pin="" pinBrightness="255" />
+        <display type="-" serial="MobiFlight Mega/ SN-E34-DB9" trigger="normal" pin="" pinBrightness="255" />
         <preconditions />
         <configrefs />
       </settings>
