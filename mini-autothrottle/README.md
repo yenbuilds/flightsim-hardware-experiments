@@ -1,6 +1,6 @@
 # Boeing 737 motorised throttle
 
-This is a small motorised Boeing 737-style throttle project. Nothing starts on its own, and the bridge only moves the levers when you explicitly enable it.
+This is a mini motorised airplane throttle project. Nothing starts on its own, and the bridge only moves the levers when you explicitly enable it.
 
 The supplied profile is `boeing-737` (also `737` and `pmdg-737`). It maps a simulator throttle value to the physical lever from the 45% active floor to full travel:
 
@@ -136,8 +136,8 @@ There is no ready-made Node program here. This is the API to call if you are rep
 ## First powered test
 
 1. Keep the motor supply off and confirm the Teensy appears as both serial and joystick USB devices.
-2. Set the pot limits and check the lever does not report outside them.
-3. Connect motor power with the lever near the 461-count floor.
+2. ??Set the pot limits and check the lever does not report outside them??
+3. Connect motor power with the ??lever near the 461-count floor??.
 4. Send a small target change first and check the direction. If it is wrong, reverse the motor leads or fix the direction logic before it reaches a mechanical stop.
 5. Start the Python bridge in dry-run mode, then use `--enable-motion` only after the targets are correct.
 
