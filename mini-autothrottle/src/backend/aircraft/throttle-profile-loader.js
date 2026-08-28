@@ -14,12 +14,12 @@
 // Usage:
 //   const loader = require('./throttle-profile-loader');
 //   const profile = loader.getActiveProfile();           // Cached singleton
-//   const profile = loader.loadProfile('boeing-777');    // By ID
-//   const profile = loader.detectFromAircraft('pmdg-777'); // From aircraft profile
+//   const profile = loader.loadProfile('boeing-737');    // By ID
+//   const profile = loader.detectFromAircraft('pmdg-737'); // From aircraft profile
 //   const profiles = loader.listProfiles();              // All available
 //
 // Environment:
-//   THROTTLE_PROFILE - Override profile ID (e.g., 'boeing-777', 'local/my-throttle')
+//   THROTTLE_PROFILE - Override profile ID (e.g., 'boeing-737', 'local/my-throttle')
 
 const fs = require('fs');
 const path = require('path');

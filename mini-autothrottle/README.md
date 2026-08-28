@@ -15,7 +15,7 @@ The supplied profile is `boeing-737` (also `737` and `pmdg-737`). It maps a simu
 - Teensy 4.1.
 - A motorised throttle mechanism with a potentiometer mechanically linked to the lever.
 - TB6612FNG motor-driver breakout, using channel A.
-- A momentary or latching A/T mode switch.
+- A maintained 3.3 V A/T-enable signal for Teensy pin 2 (normally a latching toggle switch).
 - A motor power supply matched to the motor. The old build used roughly 5-9 V; confirm the motor current and voltage before using that range.
 - USB connection from the Teensy to the PC.
 - Arduino IDE with Teensy support.
@@ -32,7 +32,7 @@ Optional: three red/green gear LEDs, each with suitable current limiting.
 | 9 | TB6612 `AIN2` | Motor direction. |
 | 10 | TB6612 `PWMA` | PWM motor speed. |
 | 7 | TB6612 `STBY` | The firmware drives this high to enable the driver. |
-| 2 | A/T mode switch | High = A/T; uses Teensy's internal pull-down. Do not apply more than 3.3 V. |
+| 2 | A/T-enable input | High = local A/T motor enable; uses Teensy's internal pull-down. A latching toggle switch is the normal choice. Do not apply more than 3.3 V. |
 | 35 / 36 | Nose gear red / green LED | Optional; use resistors. |
 | 37 / 38 | Left gear red / green LED | Optional; use resistors. |
 | 39 / 40 | Right gear red / green LED | Optional; use resistors. |
@@ -73,7 +73,7 @@ With motor power disconnected and the A/T switch in MANUAL, check that 0%, 50%, 
 py bridge\msfs_teensy_bridge.py --port COM10 --enable-motion
 ```
 
-At startup it sends the calibration to the Teensy, then waits for three good readings before it sends a target. The physical A/T switch is what lets the motor run. The bridge does not know whether the sim's A/T is engaged.
+At startup it sends the calibration to the Teensy, then waits for three good readings before it sends a target. The Teensy's pin-2 input controls whether it drives the motor; it is independent of the simulator's A/T state. The bridge reads only engine-throttle positions and does not know whether the sim's A/T is engaged. A momentary pushbutton enables motor control only while held—the current firmware does not latch it.
 
 Run either this bridge or a Node bridge, not both. Two programs must not write to the same Teensy port.
 
@@ -141,4 +141,4 @@ There is no ready-made Node program here. This is the API to call if you are rep
 4. Send a small target change first and check the direction. If it is wrong, reverse the motor leads or fix the direction logic before it reaches a mechanical stop.
 5. Start the Python bridge in dry-run mode, then use `--enable-motion` only after the targets are correct.
 
-The old A320 files are in `disabled-profiles/` and cannot be selected. `boeing-777` remains as an older reference profile; it is not the default.
+The unfinished A320 and unused 777 profiles are in `disabled-profiles/` and cannot be selected.
