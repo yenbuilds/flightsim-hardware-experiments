@@ -1,0 +1,17 @@
+# Local/private MobiFlight exports contain physical controller serials.
+**/*.mcc
+!**/*.public.mcc
+.local/
+
+# Common local-only files.
+.env
+.env.*
+!.env.example
+*.log
+__pycache__/
+*.py[cod]
+.venv/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

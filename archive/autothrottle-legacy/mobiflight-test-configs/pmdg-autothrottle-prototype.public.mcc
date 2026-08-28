@@ -3,36 +3,36 @@
   <outputs>
     <config guid="d7a8037b-400a-4bb2-a837-7c5910f74ebb">
       <active>true</active>
-      <description>autothrottle (PMDG 77W)</description>
+      <description>autothrottle (PMDG)</description>
       <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
         <source type="SimConnect" VarType="CODE" Value="(L:switch_2071_a, number)" UUID="96eb1dd2-e2aa-4cd2-9246-28de2393493a" />
         <test type="Float" value="1" />
         <modifiers />
-        <display type="Output" serial="MobiFlight Mega/ SN-E34-DB9" trigger="normal" pin="Teensy42" pinBrightness="255" />
+        <display type="Output" serial="MobiFlight Mega/ SN-PUB-ATC" trigger="normal" pin="Teensy42" pinBrightness="255" />
         <preconditions />
         <configrefs />
       </settings>
     </config>
     <config guid="9da9a91b-f3bc-4406-9f0e-a00d0e1320e1">
       <active>true</active>
-      <description>throttle lever position index 1 (general) - diagnostic only</description>
+      <description>throttle lever pos idx1 (general)</description>
       <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
         <source type="SimConnect" VarType="CODE" Value="(A:GENERAL ENG THROTTLE LEVER POSITION:1,Percent)" UUID="0b686a65-eea5-4055-ae49-b6e553391c5c" />
         <test type="Float" value="1" />
         <modifiers />
-        <display type="-" serial="MobiFlight Mega/ SN-E34-DB9" trigger="normal" pin="" pinBrightness="255" />
+        <display type="-" serial="MobiFlight Mega/ SN-PUB-ATC" trigger="normal" pin="" pinBrightness="255" />
         <preconditions />
         <configrefs />
       </settings>
     </config>
     <config guid="b6fac288-120f-4152-b0fa-3fed63c2bd96">
       <active>true</active>
-      <description>throttle lever position index 2 (general) - diagnostic only</description>
+      <description>throttle lever pos idx2 (general)</description>
       <settings msdata:InstanceType="MobiFlight.OutputConfigItem, MFConnector, Version=10.5.3.0, Culture=neutral, PublicKeyToken=null" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
         <source type="SimConnect" VarType="CODE" Value="(A:GENERAL ENG THROTTLE LEVER POSITION:2,Percent)" UUID="0b686a65-eea5-4055-ae49-b6e553391c5c" />
         <test type="Float" value="1" />
         <modifiers />
-        <display type="-" serial="MobiFlight Mega/ SN-E34-DB9" trigger="normal" pin="" pinBrightness="255" />
+        <display type="-" serial="MobiFlight Mega/ SN-PUB-ATC" trigger="normal" pin="" pinBrightness="255" />
         <preconditions />
         <configrefs />
       </settings>
