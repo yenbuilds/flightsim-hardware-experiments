@@ -1,0 +1,21 @@
+{
+  "$schema": "./throttle-profile.schema.json",
+  "version": 1,
+  "id": "boeing-737",
+  "name": "Boeing 737",
+  "description": "Servo-driven PMDG 737 autothrottle with a 45% active floor.",
+  "namespace": "official",
+  "author": null,
+  "visibility": "public",
+  "extends": "boeing-base",
+
+  "matching": {
+    "priority": 100,
+    "aliases": ["737", "b737", "b738", "b739", "pmdg737", "pmdg-737"],
+    "aircraftProfiles": ["pmdg-737"]
+  },
+
+  "behavior": {
+    "travelMode": "half"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "./throttle-profile.schema.json",
+  "version": 1,
+  "id": "boeing-777",
+  "name": "Boeing 777",
+  "description": "Servo-driven autothrottle with 45% virtual detent",
+  "namespace": "official",
+  "author": null,
+  "visibility": "public",
+  "extends": "boeing-base",
+
+  "matching": {
+    "priority": 100,
+    "aliases": ["777", "b777", "b77w", "pmdg777", "pmdg-777"],
+    "aircraftProfiles": ["pmdg-777"]
+  },
+
+  "behavior": {
+    "travelMode": "bottom"
+  }
+}

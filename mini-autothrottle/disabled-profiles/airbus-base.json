@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "id": "airbus-base",
+  "name": "Airbus Base",
+  "description": "Archived, unverified detent-based throttle profile. Not loadable.",
+  "namespace": "disabled",
+  "author": null,
+  "visibility": "private",
+  "abstract": true,
+  "matching": {
+    "priority": 0,
+    "aliases": []
+  },
+  "physical": {
+    "potMin": 10,
+    "potMax": 1013,
+    "rawMax": 16383
+  },
+  "detents": [
+    {
+      "id": "idle",
+      "fraction": 0.0,
+      "simPctRange": [0, 25],
+      "label": "IDLE",
+      "isIdle": true,
+      "isDetentGate": true
+    },
+    {
+      "id": "clb",
+      "fraction": 0.35,
+      "simPctRange": [26, 65],
+      "label": "CLB",
+      "isDetentGate": true
+    },
+    {
+      "id": "flx_mct",
+      "fraction": 0.70,
+      "simPctRange": [66, 90],
+      "label": "FLX/MCT",
+      "isDetentGate": true
+    },
+    {
+      "id": "toga",
+      "fraction": 1.0,
+      "simPctRange": [91, 100],
+      "label": "TOGA",
+      "isDetentGate": true
+    }
+  ],
+  "behavior": {
+    "servoEnabled": false,
+    "detentGatesEnabled": true,
+    "mappingMode": "detent",
+    "commandFormat": "detent",
+    "leverPositionMode": "manual",
+    "clampBelowActiveFloor": false,
+    "minDeltaCounts": 2,
+    "travelMode": "full"
+  }
+}

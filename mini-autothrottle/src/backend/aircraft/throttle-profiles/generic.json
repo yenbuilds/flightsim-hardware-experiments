@@ -1,0 +1,55 @@
+{
+  "$schema": "./throttle-profile.schema.json",
+  "version": 1,
+  "id": "generic",
+  "name": "Generic (Manual No-Servo)",
+  "description": "Default non-servo throttle with configurable detent. Base profile for inheritance.",
+  "namespace": "official",
+  "author": null,
+  "visibility": "public",
+  "abstract": false,
+
+  "matching": {
+    "priority": -1000,
+    "aliases": ["default", "generic"]
+  },
+
+  "physical": {
+    "potMin": 10,
+    "potMax": 1013,
+    "rawMax": 16383
+  },
+
+  "detents": [
+    {
+      "id": "idle",
+      "fraction": 0.0,
+      "simPctRange": [0, 0],
+      "label": "IDLE",
+      "isIdle": true
+    },
+    {
+      "id": "active_min",
+      "fraction": 0.45,
+      "simPctRange": [0, 0],
+      "label": "A/T MIN",
+      "isActiveFloor": true
+    },
+    {
+      "id": "full",
+      "fraction": 1.0,
+      "simPctRange": [100, 100],
+      "label": "FULL"
+    }
+  ],
+
+  "behavior": {
+    "servoEnabled": false,
+    "mappingMode": "linear",
+    "commandFormat": "legacy",
+    "leverPositionMode": "manual",
+    "clampBelowActiveFloor": true,
+    "minDeltaCounts": 2,
+    "travelMode": "bottom"
+  }
+}

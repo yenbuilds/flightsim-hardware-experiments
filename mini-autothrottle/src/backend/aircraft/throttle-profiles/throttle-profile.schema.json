@@ -1,0 +1,233 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "throttle-profile.schema.json",
+  "title": "Throttle Profile",
+  "description": "Configuration profile for throttle/autothrottle behavior on custom hardware",
+  "type": "object",
+
+  "required": ["version", "id", "name"],
+
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Schema version number. Current: 1"
+    },
+
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Unique identifier (lowercase, hyphens only)"
+    },
+
+    "name": {
+      "type": "string",
+      "description": "Human-readable display name"
+    },
+
+    "description": {
+      "type": "string",
+      "description": "Longer description of the profile"
+    },
+
+    "namespace": {
+      "type": "string",
+      "enum": ["official", "local", "community"],
+      "default": "official",
+      "description": "Profile namespace: 'official' = shipped with app, 'local' = user-created, 'community' = shared"
+    },
+
+    "author": {
+      "type": ["string", "null"],
+      "description": "Installation UUID of profile creator. Null for official profiles."
+    },
+
+    "authorAccount": {
+      "type": ["string", "null"],
+      "description": "FUTURE: Account ID when user authentication is implemented. Null until then."
+    },
+
+    "createdAt": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when profile was created"
+    },
+
+    "updatedAt": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when profile was last modified"
+    },
+
+    "visibility": {
+      "type": "string",
+      "enum": ["private", "public"],
+      "default": "private",
+      "description": "Visibility for sharing"
+    },
+
+    "extends": {
+      "type": ["string", "null"],
+      "description": "ID of parent profile to inherit from"
+    },
+
+    "abstract": {
+      "type": "boolean",
+      "default": false,
+      "description": "If true, cannot be used directly - only as base for extension"
+    },
+
+    "matching": {
+      "type": "object",
+      "description": "Rules for auto-detecting this throttle profile",
+      "properties": {
+        "priority": {
+          "type": "integer",
+          "default": 0,
+          "description": "Higher priority wins when multiple profiles match"
+        },
+        "aliases": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Short names for manual selection (env var, CLI)"
+        },
+        "aircraftProfiles": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Aircraft profile IDs this throttle profile applies to"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "physical": {
+      "type": "object",
+      "description": "Physical hardware constants for potentiometer mapping",
+      "properties": {
+        "potMin": {
+          "type": "integer",
+          "default": 10,
+          "description": "ADC count at physical minimum (throttle idle)"
+        },
+        "potMax": {
+          "type": "integer",
+          "default": 1013,
+          "description": "ADC count at physical maximum (full throttle)"
+        },
+        "rawMax": {
+          "type": "integer",
+          "default": 16383,
+          "description": "Raw input scale maximum"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "detents": {
+      "type": "array",
+      "description": "Named positions along throttle travel",
+      "items": {
+        "type": "object",
+        "required": ["id", "fraction"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique detent identifier (idle, clb, flx_mct, toga, etc.)"
+          },
+          "fraction": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Position as fraction of physical travel (0.0 = min, 1.0 = max)"
+          },
+          "simPctRange": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "Sim throttle % range that maps to this detent [min, max]"
+          },
+          "label": {
+            "type": "string",
+            "description": "Display label for this detent"
+          },
+          "isIdle": {
+            "type": "boolean",
+            "default": false,
+            "description": "True if this is the idle zone"
+          },
+          "isActiveFloor": {
+            "type": "boolean",
+            "default": false,
+            "description": "True if this is the bottom of active A/T range"
+          },
+          "isDetentGate": {
+            "type": "boolean",
+            "default": false,
+            "description": "True if servo should provide tactile feedback here"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "behavior": {
+      "type": "object",
+      "description": "Throttle behavior configuration",
+      "properties": {
+        "servoEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Does the servo physically move the lever?"
+        },
+        "detentGatesEnabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Does servo provide haptic detent gates?"
+        },
+        "mappingMode": {
+          "type": "string",
+          "enum": ["linear", "detent"],
+          "default": "linear",
+          "description": "How to map sim throttle to physical position"
+        },
+        "commandFormat": {
+          "type": "string",
+          "enum": ["legacy"],
+          "default": "legacy",
+          "description": "Serial movement command format: T####"
+        },
+        "leverPositionMode": {
+          "type": "string",
+          "enum": ["servo", "manual"],
+          "default": "servo",
+          "description": "Is lever position driven by a servo or manually?"
+        },
+        "clampBelowActiveFloor": {
+          "type": "boolean",
+          "default": true,
+          "description": "Clamp sim values below active floor to active floor"
+        },
+        "minDeltaCounts": {
+          "type": "integer",
+          "default": 2,
+          "description": "Minimum change in counts before sending new command"
+        },
+        "travelMode": {
+          "type": "string",
+          "enum": ["half", "full", "bottom"],
+          "default": "bottom",
+          "description": "Physical joystick-axis travel span used by the Teensy firmware"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+
+  "additionalProperties": false
+}

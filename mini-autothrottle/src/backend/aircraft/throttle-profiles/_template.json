@@ -1,0 +1,17 @@
+{
+  "$schema": "./throttle-profile.schema.json",
+  "version": 1,
+  "id": "_template",
+  "name": "Template Profile",
+  "description": "Starting point for creating new throttle profiles. Copy and modify.",
+  "namespace": "local",
+  "author": null,
+  "visibility": "private",
+  "extends": "generic",
+
+  "matching": {
+    "priority": 0,
+    "aliases": [],
+    "aircraftProfiles": []
+  }
+}

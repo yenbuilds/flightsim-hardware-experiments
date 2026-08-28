@@ -2,6 +2,7 @@
 **/*.mcc
 !**/*.public.mcc
 .local/
+.tmp/
 
 # Common local-only files.
 .env

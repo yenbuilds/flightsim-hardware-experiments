@@ -1,0 +1,54 @@
+{
+  "$schema": "./throttle-profile.schema.json",
+  "version": 1,
+  "id": "boeing-base",
+  "name": "Boeing Base",
+  "description": "Base profile for Boeing-style servo-driven throttles. Abstract - do not use directly.",
+  "namespace": "official",
+  "author": null,
+  "visibility": "public",
+  "abstract": true,
+
+  "matching": {
+    "priority": 0,
+    "aliases": []
+  },
+
+  "physical": {
+    "potMin": 10,
+    "potMax": 1013,
+    "rawMax": 16383
+  },
+
+  "detents": [
+    {
+      "id": "idle",
+      "fraction": 0.0,
+      "simPctRange": [0, 0],
+      "label": "IDLE",
+      "isIdle": true
+    },
+    {
+      "id": "active_min",
+      "fraction": 0.45,
+      "simPctRange": [0, 0],
+      "label": "A/T MIN",
+      "isActiveFloor": true
+    },
+    {
+      "id": "toga",
+      "fraction": 1.0,
+      "simPctRange": [100, 100],
+      "label": "TOGA"
+    }
+  ],
+
+  "behavior": {
+    "servoEnabled": true,
+    "mappingMode": "linear",
+    "commandFormat": "legacy",
+    "leverPositionMode": "servo",
+    "clampBelowActiveFloor": true,
+    "minDeltaCounts": 2
+  }
+}

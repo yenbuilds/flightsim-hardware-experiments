@@ -1,0 +1,12 @@
+{
+  "name": "mini-autothrottle",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Standalone reference snapshot of the Teensy autothrottle code.",
+  "scripts": {
+    "test": "node tests/test-boeing-737.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

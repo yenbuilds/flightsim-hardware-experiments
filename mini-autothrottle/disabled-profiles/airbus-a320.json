@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "id": "airbus-a320",
+  "name": "Airbus A320",
+  "description": "Archived, unverified detent-based throttle profile. Not loadable.",
+  "namespace": "disabled",
+  "author": null,
+  "visibility": "private",
+  "extends": "airbus-base",
+  "matching": {
+    "priority": 100,
+    "aliases": ["a320", "a32n", "a32nx", "fenix", "fenix-a320"],
+    "aircraftProfiles": ["fenix-a320"]
+  },
+  "behavior": {
+    "travelMode": "full"
+  }
+}
